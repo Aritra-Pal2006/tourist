@@ -3,7 +3,7 @@ services:
     name: travelease
     env: node
     buildCommand: cd client && npm install && npm run build
-    startCommand: cd client && npm run preview
+    startCommand: cd client && npx vite preview --host 0.0.0.0 --port $PORT
     staticPublishPath: ./client/dist
     envVars:
       - key: NODE_VERSION

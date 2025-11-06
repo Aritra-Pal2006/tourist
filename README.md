@@ -132,13 +132,25 @@ Steps to deploy on Render:
    - Branch: main (or your default branch)
    - Root Directory: Leave empty
    - Build Command: `cd client && npm install && npm run build`
-   - Start Command: `cd client && npm run preview`
+   - Start Command: `cd client && npx vite preview --host 0.0.0.0 --port $PORT`
 6. Set environment variables in the Render dashboard:
    - `NODE_VERSION`: 18
 7. Click "Create Web Service"
 8. Render will automatically build and deploy your application
 
 The application will be available at `https://your-app-name.onrender.com`
+
+#### Troubleshooting Build Issues
+
+If you encounter build issues on Render, particularly with "vite: Permission denied":
+
+1. The project includes a custom build script ([render-build.js](file:///d:/projects/tourist/client/render-build.js)) that tries multiple approaches to run the build
+2. Ensure your Render service is configured with:
+   - Build Command: `cd client && npm install && npm run build`
+   - Start Command: `cd client && npx vite preview --host 0.0.0.0 --port $PORT`
+3. Check that the `NODE_VERSION` environment variable is set to `18`
+4. If issues persist, you can try changing the build command to:
+   `cd client && npm install && npx vite build`
 
 #### Manual Deployment
 
