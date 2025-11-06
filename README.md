@@ -150,8 +150,9 @@ If you encounter build issues on Render:
    - All `.js` files use `import` statements instead of `require()`
 
 2. **Vite Permission Denied**:
-   - The project uses `npm run render-build` which directly calls `vite build`
+   - The project now uses `npx vite build` instead of directly calling the vite executable
    - This avoids permission issues with the vite executable
+   - The build script uses `npx` which automatically handles execution permissions
 
 3. **General Build Failures**:
    - Ensure your Render service is configured with the correct build and start commands
