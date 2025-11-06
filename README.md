@@ -117,7 +117,39 @@ The build output will be in the `dist` directory.
 
 ### Deployment
 
+#### Deploying to Render
+
 This project is configured for deployment on Render. Simply connect your repository to Render and it will automatically deploy using the `render.yaml` configuration.
+
+Steps to deploy on Render:
+1. Fork this repository to your GitHub account
+2. Go to [Render Dashboard](https://dashboard.render.com/)
+3. Click "New+" and select "Web Service"
+4. Connect your GitHub account and select your forked repository
+5. Configure the service:
+   - Name: travelease (or any name you prefer)
+   - Environment: Node
+   - Branch: main (or your default branch)
+   - Root Directory: Leave empty
+   - Build Command: `cd client && npm install && npm run build`
+   - Start Command: `cd client && npm run preview`
+6. Set environment variables in the Render dashboard:
+   - `NODE_VERSION`: 18
+7. Click "Create Web Service"
+8. Render will automatically build and deploy your application
+
+The application will be available at `https://your-app-name.onrender.com`
+
+#### Manual Deployment
+
+If you prefer to manually deploy:
+
+1. Build the project:
+   ```bash
+   cd client
+   npm run build
+   ```
+2. Upload the contents of the `client/dist` folder to your hosting provider
 
 ## Firebase Configuration
 
