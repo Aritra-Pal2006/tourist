@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node render-build.js",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "preview-host": "vite preview --host",
-    "render-build": "node render-build.js"
+    "render-build": "vite build"
   },
   "dependencies": {
     "react": "^18.2.0",

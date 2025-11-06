@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
 console.log('Starting build process...');
 
@@ -20,7 +20,7 @@ function executeCommand(command) {
 
 try {
   // Ensure node_modules exists or install dependencies
-  if (!fs.existsSync(path.join(__dirname, 'node_modules'))) {
+  if (!fs.existsSync(path.join(process.cwd(), 'node_modules'))) {
     console.log('Installing dependencies...');
     if (!executeCommand('npm install')) {
       throw new Error('Failed to install dependencies');
@@ -35,7 +35,7 @@ try {
     console.log('First attempt failed, trying alternative approach...');
     
     // Second try: using node modules directly
-    const vitePath = path.join(__dirname, 'node_modules', '.bin', 'vite');
+    const vitePath = path.join(process.cwd(), 'node_modules', '.bin', 'vite');
     if (fs.existsSync(vitePath)) {
       if (!executeCommand(`${vitePath} build`)) {
         throw new Error('All build attempts failed');
